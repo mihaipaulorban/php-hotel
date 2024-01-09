@@ -12,6 +12,41 @@
 <body> 
     <div class="container mt-5">
         <h1 class="text-center mb-4 text-white">Lista di Hotel</h1>
+
+           <!-- Form per i filtri -->
+           <form action="" method="get" class="mb-4">
+            <div class="row g-3 align-items-center justify-content-center">
+
+            <!-- Checkbox per parcheggio -->
+                <div class="col-auto">
+                    <label for="parking" class="col-form-label text-white">Solo con parcheggio:</label>
+                </div>
+                <div class="col-auto">
+                    <input type="checkbox" id="parking" name="parking" value="yes" class="form-check-input" <?php echo isset($_GET['parking']) ? 'checked' : ''; ?>>
+                </div>
+
+            <!-- Scelta epr voto minimo -->
+                <div class="col-auto">
+                    <label for="vote" class="col-form-label text-white">Voto minimo:</label>
+                </div>
+                <div class="col-auto">
+                    <select id="vote" name="vote" class="form-select">
+                        <option value="">Scegli...</option>
+                        <option value="1" <?php echo (isset($_GET['vote']) && $_GET['vote'] == '1') ? 'selected' : ''; ?>>1</option>
+                        <option value="2" <?php echo (isset($_GET['vote']) && $_GET['vote'] == '2') ? 'selected' : ''; ?>>2</option>
+                        <option value="3" <?php echo (isset($_GET['vote']) && $_GET['vote'] == '3') ? 'selected' : ''; ?>>3</option>
+                        <option value="4" <?php echo (isset($_GET['vote']) && $_GET['vote'] == '4') ? 'selected' : ''; ?>>4</option>
+                        <option value="5" <?php echo (isset($_GET['vote']) && $_GET['vote'] == '5') ? 'selected' : ''; ?>>5</option>
+                    </select>
+                </div>
+
+                <!-- Pulsante Submit -->
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Filtra</button>
+                </div>
+            </div>
+        </form>
+
         <table class="table table-hover">
             <thead class="text-white">
                 <tr>
@@ -64,9 +99,26 @@
                     ],
             
                 ];
+                $filteredHotels = $hotels;
+
+                // Filtro per parcheggio
+                if (isset($_GET['parking'])) {
+                    $filteredHotels = array_filter($filteredHotels, function ($hotel) {
+                        return $hotel['parking'];
+                    });
+                }
+
+                // Filtro per voto
+                if (isset($_GET['vote']) && $_GET['vote'] !== '') {
+                    $vote = $_GET['vote'];
+                    $filteredHotels = array_filter($filteredHotels, function ($hotel) use ($vote) {
+                        return $hotel['vote'] >= $vote;
+                    });
+                }
+
 
                 // Iterazione degli Hotel
-                foreach ($hotels as $hotel) {
+                foreach ($filteredHotels as $hotel) {
                     echo "<tr>";
                     echo "<td>" . $hotel['name'] . "</td>";
                     echo "<td>" . $hotel['description'] . "</td>";

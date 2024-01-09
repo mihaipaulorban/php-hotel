@@ -1,13 +1,10 @@
 body {
-  background-color: #f8f9fa;
+  background-image: url(https://img.freepik.com/free-vector/vibrant-summer-ombre-background-vector_53876-105765.jpg?w=1380&t=st=1704809967~exp=1704810567~hmac=80b12f9a7783bf875d644eafc5741040d972e8b507591ece835a795fc7a3fe37);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
 }
-.hotel-name {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-.hotel-label {
-  color: #6c757d;
-}
-.hotel-info {
-  color: #212529;
+.card {
+  background-color: rgba(132, 132, 132, 0.208);
 }

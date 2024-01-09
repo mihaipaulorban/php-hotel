@@ -12,66 +12,74 @@
 <body> 
     <div class="container mt-5">
         <h1 class="text-center mb-4 text-white">Lista di Hotel</h1>
-        <div class="row">
-            <?php
-            // Array degli hotel
-            $hotels = [
+        <table class="table table-hover">
+            <thead class="text-white">
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrizione</th>
+                    <th>Parcheggio</th>
+                    <th>Voto</th>
+                    <th>Distanza dal centro</th>
+                </tr>
+            </thead>
+            <tbody class="text-white">
+                <?php
+                // Array degli hotel
+                $hotels = [
 
-                [
-                    'name' => 'Hotel Belvedere',
-                    'description' => 'Hotel Belvedere Descrizione',
-                    'parking' => true,
-                    'vote' => 4,
-                    'distance_to_center' => 10.4
-                ],
-                [
-                    'name' => 'Hotel Futuro',
-                    'description' => 'Hotel Futuro Descrizione',
-                    'parking' => true,
-                    'vote' => 2,
-                    'distance_to_center' => 2
-                ],
-                [
-                    'name' => 'Hotel Rivamare',
-                    'description' => 'Hotel Rivamare Descrizione',
-                    'parking' => false,
-                    'vote' => 1,
-                    'distance_to_center' => 1
-                ],
-                [
-                    'name' => 'Hotel Bellavista',
-                    'description' => 'Hotel Bellavista Descrizione',
-                    'parking' => false,
-                    'vote' => 5,
-                    'distance_to_center' => 5.5
-                ],
-                [
-                    'name' => 'Hotel Milano',
-                    'description' => 'Hotel Milano Descrizione',
-                    'parking' => true,
-                    'vote' => 2,
-                    'distance_to_center' => 50
-                ],
-        
-            ];
+                    [
+                        'name' => 'Hotel Belvedere',
+                        'description' => 'Hotel Belvedere Descrizione',
+                        'parking' => true,
+                        'vote' => 4,
+                        'distance_to_center' => 10.4
+                    ],
+                    [
+                        'name' => 'Hotel Futuro',
+                        'description' => 'Hotel Futuro Descrizione',
+                        'parking' => true,
+                        'vote' => 2,
+                        'distance_to_center' => 2
+                    ],
+                    [
+                        'name' => 'Hotel Rivamare',
+                        'description' => 'Hotel Rivamare Descrizione',
+                        'parking' => false,
+                        'vote' => 1,
+                        'distance_to_center' => 1
+                    ],
+                    [
+                        'name' => 'Hotel Bellavista',
+                        'description' => 'Hotel Bellavista Descrizione',
+                        'parking' => false,
+                        'vote' => 5,
+                        'distance_to_center' => 5.5
+                    ],
+                    [
+                        'name' => 'Hotel Milano',
+                        'description' => 'Hotel Milano Descrizione',
+                        'parking' => true,
+                        'vote' => 2,
+                        'distance_to_center' => 50
+                    ],
             
-            // Iterazione degli Hotel
-            foreach ($hotels as $hotel) {
-                echo "<div class='col-sm-6 col-lg-4 mb-4'>"; 
-                echo "<div class='card h-100'>"; 
-                echo "<div class='card-body'>";
-                echo "<h3 class='card-title text-white'>" . $hotel['name'] . "</h3>"; 
-                echo "<p class='card-text text-white'><strong>Descrizione:</strong> " . $hotel['description'] . "</p>";
-                echo "<p class='card-text text-white'><strong>Parcheggio:</strong> " . ($hotel['parking'] ? 'Sì' : 'No') . "</p>";
-                echo "<p class='card-text text-white'><strong>Voto:</strong> " . $hotel['vote'] . "</p>";
-                echo "<p class='card-text text-white'><strong>Distanza dal centro:</strong> " . $hotel['distance_to_center'] . " km</p>";
-                echo "</div>"; 
-                echo "</div>"; 
-                echo "</div>"; 
-            }
-            ?>
-        </div> 
+                ];
+
+                // Iterazione degli Hotel
+                foreach ($hotels as $hotel) {
+                    echo "<tr>";
+                    echo "<td>" . $hotel['name'] . "</td>";
+                    echo "<td>" . $hotel['description'] . "</td>";
+                    echo "<td>" . ($hotel['parking'] ? 'Sì' : 'No') . "</td>";
+                    echo "<td>" . $hotel['vote'] . "</td>";
+                    echo "<td>" . $hotel['distance_to_center'] . " km</td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
     </div> 
 </body>
 </html>
+
 
